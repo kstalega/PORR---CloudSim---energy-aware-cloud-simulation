@@ -33,7 +33,7 @@ public class PORRPowerSaver {
     public static void main(String[] args) throws IOException {
         boolean enableOutput = true;
         boolean outputToFile = false;
-        String inputFolder = LrMu.class.getClassLoader().getResource("workload/planetlab").getPath();
+        String inputFolder = LrMu.class.getClassLoader().getResource("workload/porr").getPath();
         String outputFolder = "output";
         String workload = "20110303"; // PlanetLab workload
         String vmAllocationPolicy = "lr"; // Local Regression (LR) VM allocation policy
