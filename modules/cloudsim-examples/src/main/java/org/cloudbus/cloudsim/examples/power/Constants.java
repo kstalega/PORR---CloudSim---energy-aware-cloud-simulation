@@ -1,8 +1,7 @@
 package org.cloudbus.cloudsim.examples.power;
 
 import org.cloudbus.cloudsim.power.models.PowerModel;
-import org.cloudbus.cloudsim.power.models.PowerModelSpecPowerHpProLiantMl110G4Xeon3040;
-import org.cloudbus.cloudsim.power.models.PowerModelSpecPowerHpProLiantMl110G5Xeon3075;
+import org.cloudbus.cloudsim.power.models.*;
 
 /**
  * If you are using any algorithms, policies or workload included in the power package, please cite
@@ -58,8 +57,8 @@ public class Constants {
 	public final static int HOST_STORAGE = 1000000; // 1 GB
 
 	public final static PowerModel[] HOST_POWER = {
-		new PowerModelSpecPowerHpProLiantMl110G4Xeon3040(),
-		new PowerModelSpecPowerHpProLiantMl110G5Xeon3075()
+		new PowerModelSpecPowerWOZ(),
+		new PowerModelSpecPowerWOL()
 	};
 
 }
