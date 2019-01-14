@@ -1,11 +1,14 @@
 package org.cloudbus.cloudsim.examples.power.planetlab;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.examples.power.Helper;
 import org.cloudbus.cloudsim.examples.power.RunnerAbstract;
+import org.cloudbus.cloudsim.lists.VmList;
 
 /**
  * The example runner for the PlanetLab workload.
@@ -70,6 +73,17 @@ public class PlanetLabRunner extends RunnerAbstract {
 
 			cloudletList = PlanetLabHelper.createCloudletListPlanetLab(brokerId, inputFolder);
 			vmList = Helper.createVmList(brokerId, cloudletList.size());
+
+			double totalMIPS = 0;
+			for (int i = 0; i < vmList.size(); i++) {
+				totalMIPS = totalMIPS + vmList.get(i).getMips();
+			}
+
+			List<Double> MLC = new ArrayList<Double>();
+			for (int i = 0; i < vmList.size(); i++){
+				MLC.add((vmList.get(i).getMips()/totalMIPS)*100);
+			}
+
 			hostList = Helper.createHostList(PlanetLabConstants.NUMBER_OF_HOSTS);
 		} catch (Exception e) {
 			e.printStackTrace();
