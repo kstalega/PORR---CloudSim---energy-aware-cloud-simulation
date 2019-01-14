@@ -26,12 +26,12 @@ package org.cloudbus.cloudsim.power.models;
  * @author Anton Beloglazov
  * @since CloudSim Toolkit 3.0
  */
-public class PowerModelSpecPowerHpProLiantMl110G4Xeon3040 extends PowerModelSpecPower {
+public class PowerModelSpecPowerWOL extends PowerModelSpecPower {
 	/** 
          * The power consumption according to the utilization percentage. 
          * @see #getPowerData(int) 
          */
-	private final double[] power = { 86, 89.4, 92.6, 96, 99.5, 102, 106, 108, 112, 114, 117 };
+	private final double[] power = { 93.7, 97, 101, 105, 110, 116, 121, 125, 129, 133, 135 };
 
 	@Override
 	protected double getPowerData(int index) {
