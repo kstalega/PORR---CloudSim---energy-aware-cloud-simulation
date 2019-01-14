@@ -1,7 +1,6 @@
 package org.cloudbus.cloudsim.examples.power.planetlab;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +27,19 @@ import org.cloudbus.cloudsim.examples.power.Constants;
 public class PlanetLabHelper {
 
 	/**
+	 * Get cloudlet length from source file
+	 *
+	 * @param inputPath The path of a PlanetLab datacenter trace.
+	 */
+	public static int getCloudLengthFromFile(String inputPath) throws IOException {
+		int cloudletLength;
+		BufferedReader input = new BufferedReader(new FileReader(inputPath));
+		cloudletLength = Integer.valueOf(input.readLine()) * 100000;
+		input.close();
+		return cloudletLength;
+	}
+
+	/**
 	 * Creates the cloudlet list planet lab.
 	 * 
 	 * @param brokerId the broker id
@@ -51,7 +63,7 @@ public class PlanetLabHelper {
 			try {
 				cloudlet = new Cloudlet(
 						i,
-						Constants.CLOUDLET_LENGTH,
+						getCloudLengthFromFile(files[i].getAbsolutePath()),
 						Constants.CLOUDLET_PES,
 						fileSize,
 						outputSize,
