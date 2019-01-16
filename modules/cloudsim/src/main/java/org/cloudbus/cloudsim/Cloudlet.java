@@ -207,6 +207,11 @@ public class Cloudlet {
     protected int vmId;
 
     /**
+     * The QoS of cloudlet
+     */
+    protected int QoS;
+
+    /**
      * The cost of each byte of bandwidth (bw) consumed.
      */
     protected double costPerBw;
@@ -567,6 +572,15 @@ public class Cloudlet {
 
         this.cloudletLength = cloudletLength;
         return true;
+    }
+
+    /**
+     * Sets cloudlet QoS
+     *
+     * @param QoS
+     */
+    public void setQoS(final int QoS) {
+        this.QoS = QoS;
     }
 
     /**

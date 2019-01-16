@@ -40,6 +40,27 @@ public class PlanetLabHelper {
 		return cloudletLength;
 	}
 
+
+	/**
+	 * Get cloudlet QoS from source file
+	 *
+	 * @param inputPath The path of a PlanetLab datacenter trace.
+	 */
+	public static int getCloudQoSFromFile(String inputPath) throws IOException {
+		int QoS;
+		String lastLine, currentLine;
+		lastLine = "";
+		BufferedReader input = new BufferedReader(new FileReader(inputPath));
+
+		while ((currentLine = input.readLine()) != null) {
+			lastLine = currentLine;
+		}
+
+		QoS = Integer.valueOf(lastLine);
+		input.close();
+		return QoS;
+	}
+
 	/**
 	 * Creates the cloudlet list planet lab.
 	 * 
@@ -70,7 +91,12 @@ public class PlanetLabHelper {
 						outputSize,
 						new UtilizationModelPlanetLabInMemory(
 								files[i].getAbsolutePath(),
-								Constants.SCHEDULING_INTERVAL), utilizationModelNull, utilizationModelNull);
+								Constants.SCHEDULING_INTERVAL
+						),
+						utilizationModelNull,
+						utilizationModelNull
+				);
+				cloudlet.setQoS(getCloudQoSFromFile(files[i].getAbsolutePath()));
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.exit(0);
