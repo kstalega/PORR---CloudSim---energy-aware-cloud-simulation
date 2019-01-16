@@ -2,6 +2,7 @@ package org.cloudbus.cloudsim.examples.power.planetlab;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import org.cloudbus.cloudsim.Cloudlet;
@@ -78,7 +79,7 @@ public class PlanetLabHelper {
 			cloudlet.setVmId(i);
 			list.add(cloudlet);
 		}
-
+		list.sort(Comparator.comparing(Cloudlet::getCloudletLength).reversed());
 		return list;
 	}
 
