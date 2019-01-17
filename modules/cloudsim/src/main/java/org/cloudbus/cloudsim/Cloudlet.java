@@ -583,6 +583,8 @@ public class Cloudlet {
         this.QoS = QoS;
     }
 
+    public int getQoS() { return QoS; }
+
     /**
      * Sets the network service level (ToS) for sending this cloudlet over a
      * network.

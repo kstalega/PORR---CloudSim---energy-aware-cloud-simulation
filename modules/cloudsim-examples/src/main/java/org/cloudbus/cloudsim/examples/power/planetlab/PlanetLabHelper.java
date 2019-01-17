@@ -105,7 +105,7 @@ public class PlanetLabHelper {
 			cloudlet.setVmId(i);
 			list.add(cloudlet);
 		}
-		list.sort(Comparator.comparing(Cloudlet::getCloudletLength).reversed());
+		list.sort(Comparator.comparing(Cloudlet::getQoS).reversed());
 		return list;
 	}
 
